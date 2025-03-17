@@ -1,7 +1,22 @@
 package OnlineShop;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args){
+        Warehouse warehouse = new Warehouse();
+        warehouse.addProduct("coffee", 5, 10);
+        warehouse.addProduct("milk", 3, 20);
+        warehouse.addProduct("cream", 2, 55);
+        warehouse.addProduct("bread", 7, 8);
+
+        Scanner scanner = new Scanner(System.in);
+
+        Store store = new Store(warehouse, scanner);
+        store.shop("John");
+    }
+
+    public void settingUpClasses(){
         Warehouse warehouse = new Warehouse();
         warehouse.addProduct("Milk", 3, 10);
         warehouse.addProduct("Coffee", 5, 7);
@@ -46,5 +61,21 @@ public class Main {
         System.out.println();
         cart.print();
 
+        ShoppingCart cart2 = new ShoppingCart();
+        cart2.add("milk", 3);
+        cart2.print();
+        System.out.println("Cart price: " + cart2.price() + "\n");
+
+        cart2.add("buttermilk", 5);
+        cart2.print();
+        System.out.println("Cart price: " + cart2.price() + "\n");
+
+        cart2.add("milk", 3);
+        cart2.print();
+
+        System.out.println("Cart price: " + cart2.price() + "\n");
+        cart2.add("milk", 3);
+        cart2.print();
+        System.out.println("Cart price: " + cart2.price() + "\n");
     }
 }

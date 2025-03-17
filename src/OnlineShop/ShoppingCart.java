@@ -11,7 +11,12 @@ public class ShoppingCart {
     }
 
     public void add(String product, int price){
-        this.inShoppingCart.put(product, new Item(product, 1, price));
+        if(this.inShoppingCart.containsKey(product)){
+            Item item = this.inShoppingCart.get(product);
+            item.increaseQuantity();
+        } else {
+            this.inShoppingCart.put(product, new Item(product, 1, price));
+        }
     }
 
     public int price(){
